@@ -1,1 +1,24 @@
-<p>add-apartment works!</p>
+<form [formGroup]="apartForm" (ngSubmit)="onSubmit()">
+    <label>Residence:</label>
+    <input type="text" formControlName="residence">
+    <div *ngIf="apartForm.get('residence')?.invalid && apartForm.get('residence')?.touched">Champ obligatoire</div>
+  
+    <label>Apartment Number:</label>
+    <input type="text" formControlName="apartNum">
+    <div *ngIf="apartForm.get('apartNum')?.invalid && apartForm.get('apartNum')?.touched">Chiffres uniquement</div>
+  
+    <label>Floor Number:</label>
+    <input type="text" formControlName="floorNum">
+    <div *ngIf="apartForm.get('floorNum')?.invalid && apartForm.get('floorNum')?.touched">Chiffres uniquement</div>
+  
+    <label>Surface:</label>
+    <input type="text" formControlName="surface">
+  
+    <label>Terrace:</label>
+    <input type="checkbox" formControlName="terrace">
+  
+    <label>Surface Terrace:</label>
+    <input type="text" formControlName="surfaceTerrace">
+  
+    <button type="submit" [disabled]="apartForm.invalid">Add</button>
+  </form>
